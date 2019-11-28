@@ -3,7 +3,7 @@
 <mapper namespace="com.spring.bacisic.admin.models.sys.mapper.MenuDao">
 
     <select id="getMenu4User" resultType="com.spring.bacisic.admin.models.sys.entity.Menu">
-        SELECT sm.* FROM sys_menu sm
+        SELECT DISTINCT sm.* FROM sys_menu sm
         left join sys_role_menu srm on sm.id = srm.menu_id
         left JOIN sys_user_role sur on srm.role_id = sur.role_id
         left JOIN sys_user su on sur.user_id = su.id

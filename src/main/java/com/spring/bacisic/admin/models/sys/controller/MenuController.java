@@ -193,14 +193,35 @@ public class MenuController {
     @GetMapping("/get/for/user")
     @ApiOperation(value = "初始化菜单", notes = "初始化菜单", produces = "application/json")
     public ResultPoJo<List<MenuReloadDto>> getMenu4User() {
-        List<MenuReloadDto> reloadDtos = Lists.newArrayList();
+        List<MenuReloadDto> rsList = Lists.newArrayList();
         // 根据用户查询菜单
         List<MenuReloadDto> menus = CommonUtil.convers(menuService.getMenu4User(UserUtil.getCurrentUserId()), MenuReloadDto.init);
         // 树级转换
-        menus.forEach(menu -> {
-
-        });
-        return ResultPoJo.ok();
+        for (MenuReloadDto menu : menus) {
+            String parentId = menu.getParentId();
+            if (!Constants.SYS_PARENT_ID.equals(parentId)) {
+                MenuReloadDto parentMenu = rsList.stream().filter(mu -> mu.getId().equals(parentId)).findFirst().
+                        orElseGet(() -> menus.stream().filter(mu -> mu.getId().equals(parentId)).findFirst().orElse(null));
+                if (ObjectUtil.isNull(parentMenu)) {
+                    // 查询数据库
+                    Menu parentMenu4Db = menuService.getById(parentId);
+                    if (ObjectUtil.isNotNull(parentMenu4Db)) {
+                        parentMenu = MenuReloadDto.init.apply(parentMenu4Db);
+                        rsList.add(parentMenu);
+                    } else {
+                        //菜单已被删除，子类菜单不在显示
+                        continue;
+                    }
+                }
+                // 处理子类菜单，归属
+                List<MenuReloadDto> children = Optional.ofNullable(parentMenu.getChildren()).orElse(Lists.newArrayList());
+                children.add(menu);
+                parentMenu.setChildren(children);
+            } else {
+                rsList.add(menu);
+            }
+        }
+        return ResultPoJo.ok(rsList);
     }
 }
 

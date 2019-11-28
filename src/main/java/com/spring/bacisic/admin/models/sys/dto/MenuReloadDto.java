@@ -1,5 +1,6 @@
 package com.spring.bacisic.admin.models.sys.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.bacisic.admin.models.sys.entity.Menu;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -19,7 +20,9 @@ public class MenuReloadDto {
     private String path;
     private String name;
     private String icon;
+    @JsonIgnore
     private String id;
+    @JsonIgnore
     private String parentId;
 
     private List<MenuReloadDto> children;
