@@ -1,0 +1,50 @@
+
+# \u7AEF\u53E3
+server:
+  port: 8010
+
+
+spring:
+  # jdbc config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.244.25.34:3306/bacisic_admin?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
+  # jackson config
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  # redis config
+  redis:
+    host: 47.244.25.34
+    port: 6379
+    password:
+    database: 4
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 1
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+### mybatis-plus config ###
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*/*.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1 #Logical deleted value (default is 1)
+      logic-not-delete-value: 0 #Logical not deleted value (default is 0)
+  type-enums-package: com.spring.bacisic.admin.models.*.entity.enums
+
+
+### swagger config ###
+swagger:
+  enabled: true
+
+user:
+  defaultPwd: 123456
