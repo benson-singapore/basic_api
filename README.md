@@ -17,6 +17,9 @@
 - 编译与运行：yarn ， yarn start
 - 访问：http://localhost:8000。
 
+#### docker 部署说明
+- [docker 部署说明](https://basecode-group.gitlab.io/basic-project/deploy_doc/#/)
+
 ##### swagger 
 
 ![](http://fff.ph/wfiles/images/2019/12/5386ad4615014b2d9081c981f99165d5.png)
