@@ -11,8 +11,28 @@
 - 启动：执行Main方法启动项目
 - 地址：
     swagger-ui: http://localhost:8010/swagger-ui.html。
-- 前端项目部署：
-    下载源码：[basic_web](https://gitlab.com/basecode-group/basic-project/basic_web)。
-    编译与运行：yarn ， yarn start
-    访问：http://localhost:8000。
 
+#### 前端项目部署：
+- 下载源码：[basic_web](https://gitlab.com/basecode-group/basic-project/basic_web)。
+- 编译与运行：yarn ， yarn start
+- 访问：http://localhost:8000。
+
+##### swagger 
+
+![](http://fff.ph/wfiles/images/2019/12/5386ad4615014b2d9081c981f99165d5.png)
+
+##### 管理系统
+
+- 登录页
+![](http://fff.ph/wfiles/images/2019/12/e8088b7e30b044b5a0a48959e62a6f87.png)
+- 用户管理
+![](http://fff.ph/wfiles/images/2019/12/c7e5074374f84034b4af83372765add5.png)
+![](http://fff.ph/wfiles/images/2019/12/a692dd985d85450abb43254cc6ad3e29.png)
+- 角色管理
+![](http://fff.ph/wfiles/images/2019/12/d3907354841145c29f1897295d2ae801.png)
+![](http://fff.ph/wfiles/images/2019/12/48c688a898604332ba1cc1013825deef.png)
+- 菜单管理
+![](http://fff.ph/wfiles/images/2019/12/954ca89da89545d1a1bd1a0c3194b66b.png)
+![](http://fff.ph/wfiles/images/2019/12/a2d20686f4a54634a2e76dc2015e9b3e.png)
+- 字典管理
+![](http://fff.ph/wfiles/images/2019/12/feefbfdbbbc24cc7a9e54f13e506c039.png)
