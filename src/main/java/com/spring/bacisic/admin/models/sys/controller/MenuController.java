@@ -107,7 +107,7 @@ public class MenuController {
         menu.preInsert();
         menuService.save(menu);
         // 保存角色菜单，默认管理员有所有菜单
-        new RoleMenu().setMenuId(menu.getId()).setMenuId(Constants.ROLE_ADMIN_ID).insert();
+        new RoleMenu().setMenuId(menu.getId()).setRoleId(Constants.ROLE_ADMIN_ID).insert();
         return ResultPoJo.ok();
     }
 

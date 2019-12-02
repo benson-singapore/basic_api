@@ -66,7 +66,7 @@ public class UserController {
     @GetMapping("/{id}")
     @ApiOperation(value = "查询用户", notes = "根据id查询用户信息", produces = "application/json")
     public ResultPoJo<User> getUserById(@PathVariable String id) {
-        return ResultPoJo.ok(userService.preInit().apply(userService.getById(id)));
+        return ResultPoJo.ok(userService.preInit().apply(UserUtil.getUser(id)));
     }
 
     /**
@@ -100,6 +100,7 @@ public class UserController {
     @ApiOperation(value = "修改用户", notes = "根据id修改用户信息", produces = "application/json")
     public ResultPoJo updateUser(@PathVariable String id, @RequestBody UserSaveDto userSaveDto) {
         userService.updateUser(id, userSaveDto);
+        UserUtil.clear(id);
         return ResultPoJo.ok();
     }
 
@@ -112,6 +113,7 @@ public class UserController {
     @ApiOperation(value = "删除用户", notes = "根据id删除用户，支持批量删除，多用户用逗号间隔", produces = "application/json")
     public ResultPoJo deleteUser(@PathVariable String id) {
         userService.removeByIds(Lists.newArrayList(id.split(",")));
+        UserUtil.clear(id.split(","));
         return ResultPoJo.ok();
     }
 
@@ -135,6 +137,7 @@ public class UserController {
         } else {
             throw new MyBaselogicException("103");
         }
+        UserUtil.clear(UserUtil.getCurrentUserId());
         return ResultPoJo.ok();
     }
 
@@ -150,6 +153,7 @@ public class UserController {
             for (String userId : id.split(",")) {
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 userService.updateById(new User().setId(userId).setPassword(passwordEncoder.encode(defaultPwd)));
+                UserUtil.clear(userId);
             }
         } else {
             throw new MyBaselogicException("403");

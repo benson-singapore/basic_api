@@ -21,19 +21,11 @@ public enum RedisKeyEnum {
     /**
      * app user for redis key
      */
-    REDIS_KEY_USER_APP_ID("user:app:id:{}"),
-    /**
-     * web user for redis key
-     */
-    REDIS_KEY_USER_WEB_ID("user:web:id:{}"),
+    REDIS_KEY_USER_ID("user:id:{}"),
     /**
      * redis for dict key
      */
-    REDIS_KEY_DICT_TYPE("dict:type:{}"),
-    /**
-     * redis for account type
-     */
-    REDIS_KEY_ACCOUNT_TYPE("account:type:{}");
+    REDIS_KEY_DICT_TYPE("dict:type:{}");
 
     private String key;
 

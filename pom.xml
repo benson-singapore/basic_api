@@ -162,6 +162,7 @@
     </profiles>
 
     <build>
+        <finalName>ant_api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

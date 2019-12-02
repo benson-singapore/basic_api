@@ -45,7 +45,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/sys/oauth")
-@Api(tags = "登录授权管理")
+@Api(tags = "授权管理")
 public class SysAuthController {
 
     /**
